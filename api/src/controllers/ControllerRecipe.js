@@ -30,13 +30,12 @@ const getDbinfo = async () => {
     },
   });
 };
-const getAllRecipe = async (req, res) => {
+const getAllRecipe = async () => {
   const apiInfo = await getApiInfo();
   const dbinfo = await getDbinfo();
   const infoTotal = apiInfo.concat(dbinfo);
-  res.send(infoTotal);
+  return infoTotal;
 };
-
 module.exports = {
   getAllRecipe,
 };

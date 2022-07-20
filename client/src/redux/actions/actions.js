@@ -1,0 +1,2 @@
+export const GET_ALL_RECIPE = 'GET_ALL_RECIPE';
+export const SHEART_NAME_RECYPE = 'SHEART_NAME_RECYPE';

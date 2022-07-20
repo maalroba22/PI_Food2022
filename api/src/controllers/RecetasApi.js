@@ -7,7 +7,7 @@ module.exports = {
     const dietApi = await axios.get(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`
     );
-    const diet = dietApi.data.results.map((el) => el.diets);
+    const diet = await dietApi.data.results.map((el) => el.diets);
     let data = diet.flat();
     const typeDiet = [...new Set(data), 'vegetarian'];
     typeDiet.forEach((el) => {

@@ -8,8 +8,8 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-/* creando mis rutas de Recipes */
-router.use('/recipes', recetas);
-router.use('/diet', dietas);
+
+router.use('/recipes', recetas); // contiene todas las rutas de recipes
+router.use('/diet', dietas); // todas las rutas de Diet
 
 module.exports = router;

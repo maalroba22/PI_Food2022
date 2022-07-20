@@ -1,6 +1,8 @@
 const axios = require('axios');
 const { API_KEY } = process.env;
 const { Recipe, Diet } = require('../db');
+
+/* Obtengo  las recetas de la Api */
 const getApiInfo = async () => {
   const urlApi = await axios.get(
     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`
@@ -19,6 +21,7 @@ const getApiInfo = async () => {
   });
   return apiInfo;
 };
+/* Obtengo los Datos de la base de Datos */
 const getDbinfo = async () => {
   return await Recipe.findAll({
     include: {
@@ -30,6 +33,7 @@ const getDbinfo = async () => {
     },
   });
 };
+/* Combino la infromacion de la App y la de la DB */
 const getAllRecipe = async () => {
   const apiInfo = await getApiInfo();
   const dbinfo = await getDbinfo();

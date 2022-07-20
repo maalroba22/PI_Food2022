@@ -5,18 +5,6 @@ const axios = require('axios');
 const router = Router();
 const model = require('../controllers/ControllerRecipe');
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
-
-/* ----------Listar Recetas desde la app---------- */
-
-/* Listar Recetas de la Base de Datos */
-
-/* obtener Todas las Recetas de la Api y de la bd */
-
-/* ------Obtien el Liatdo de Recetas
- contengan la palabra ingresada como query parameter */
-
 router.get('/all', async (req, res) => {
   const name = req.query.name;
   let recipeTotal = await model.getAllRecipe();

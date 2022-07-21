@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import { getAllrecipes } from '../../redux/actions/index';
-import { useSelector } from 'react-redux';
+import { useSelector, useState } from 'react-redux';
 import Search from './Search';
 import Card from './Card';
 import { Link } from 'react-router-dom';
@@ -12,6 +12,11 @@ const Home = () => {
     dispatch(getAllrecipes());
   }, [dispatch]);
   const recipe = useSelector((state) => state.recipes);
+  /* paginacion */
+  const [paginaActual, setpaginaActual] = useState(1);
+  const [recipepagina, setrecipepagina] = useState(9);
+  const indexofLastRecipe = paginaActual * recipepagina;
+  const indexOfFirsrecipe = indexofLastRecipe - recipepagina;
 
   return (
     <div>

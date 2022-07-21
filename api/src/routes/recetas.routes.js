@@ -24,11 +24,26 @@ router.get('/all', async (req, res) => {
   }
 });
 
+/* --------Busco mis Recetas po Id----------- */
+
+router.get('/:id', async (req, res) => {
+  const id = req.params.id;
+
+  const recipeTotal = await model.getAllRecipe();
+  if (id) {
+    let recipeId = await recipeTotal.filter((el) => el.id == id);
+    recipeId.length
+      ? res.status(200).json(recipeId)
+      : res.status(404).send('No se Encontro Receta con el id: ' + id);
+  }
+});
+
 /*-------Agrega un Receta y tipos de Dietas------*/
 router.post('/', async (req, res) => {
-  const { name, summary, healthScore, stepbyStep, imagen, createIndb, diet } =
+  const { name, summary, healthScore, stepbyStep, image, createIndb, diet } =
     req.body;
-  if (!name || !summary)
+  console.log(image);
+  if (!name || !summary || !image)
     res.status(404).send('las Dtos name y summary son requeridos');
   else {
     try {
@@ -37,7 +52,7 @@ router.post('/', async (req, res) => {
         summary,
         healthScore,
         stepbyStep,
-        imagen,
+        image,
         createIndb,
       });
       let dietDb = await Diet.findAll({
@@ -53,17 +68,4 @@ router.post('/', async (req, res) => {
   }
 });
 
-/* --------Busco mis Recetas po Id----------- */
-
-router.get('/:id', async (req, res) => {
-  const id = req.params.id;
-
-  const recipeTotal = await model.getAllRecipe();
-  if (id) {
-    let recipeId = await recipeTotal.filter((el) => el.id == id);
-    recipeId.length
-      ? res.status(200).json(recipeId)
-      : res.status(404).send('No se Encontro Receta con el id: ' + id);
-  }
-});
 module.exports = router;

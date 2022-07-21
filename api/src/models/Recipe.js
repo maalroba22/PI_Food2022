@@ -30,8 +30,9 @@ module.exports = (sequelize) => {
       stepbyStep: {
         type: DataTypes.TEXT,
       },
-      imagen: {
+      image: {
         type: DataTypes.STRING,
+        allowNull: true,
       },
       createIndb: {
         type: DataTypes.BOOLEAN,

@@ -17,6 +17,7 @@ const getApiInfo = async () => {
       instructions: el.analyzedInstructions[0]?.steps.map((paso) => {
         return `<b>${paso.number}</b> ${paso.step}<br>`;
       }),
+      diet: el.diets,
     };
   });
   return apiInfo;
@@ -28,7 +29,7 @@ const getDbinfo = async () => {
       model: Diet,
       atrributes: ['name'],
       through: {
-        atrributes: [],
+        atrributes: ['id', 'name'],
       },
     },
   });

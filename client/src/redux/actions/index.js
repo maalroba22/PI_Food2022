@@ -5,7 +5,7 @@ import { GET_ALL_RECIPE, SHEART_NAME_RECYPE } from './actions';
 
 export const getAllrecipes = () => {
   return async function (dispatch) {
-    await axios.get('http://localhost:3001/recipes/all').then((prueb) => {
+    await axios.get('/recipes/all').then((prueb) => {
       console.log(prueb);
       return dispatch({ type: GET_ALL_RECIPE, payload: prueb.data });
     });

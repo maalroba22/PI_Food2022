@@ -5,7 +5,7 @@ const { API_KEY } = process.env;
 module.exports = {
   diet: async () => {
     const lengthdata = await Diet.findByPk(1);
-    console.log(lengthdata);
+
     if (!lengthdata) {
       const dietApi = await axios.get(
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`
@@ -26,7 +26,8 @@ module.exports = {
       });
       console.log('me ha ejecutado' + 1);
     } else {
-      console.log('los datos ya estan cargados');
+      console.log('los datos de dietas ya estan cargados');
     }
   },
+  recipes: async () => {},
 };

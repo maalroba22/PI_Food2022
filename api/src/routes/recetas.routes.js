@@ -7,7 +7,7 @@ const model = require('../controllers/ControllerRecipe');
 
 router.get('/all', async (req, res) => {
   const name = req.query.name;
-  let recipeTotal = await model.getAllRecipe();
+  let recipeTotal = await model.getDbinfo();
   if (name) {
     let recipeName = await recipeTotal.filter((el) =>
       el.name.toLowerCase().includes(name.toString().toLowerCase())
@@ -42,29 +42,28 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   const { name, summary, healthScore, stepbyStep, image, createIndb, diet } =
     req.body;
-  console.log(image);
-  if (!name || !summary || !image)
-    res.status(404).send('las Dtos name y summary son requeridos');
-  else {
-    try {
-      let recipeCreated = await Recipe.create({
-        name,
-        summary,
-        healthScore,
-        stepbyStep,
-        image,
-        createIndb,
-      });
-      let dietDb = await Diet.findAll({
-        where: {
-          name: diet,
-        },
-      });
-      recipeCreated.addDiet(dietDb); // agrego la dieta al modelo Recipe
-      res.send('Receta Creado con exito');
-    } catch (error) {
-      res.status(404).send(error + 'Erro al crear la Receta');
-    }
+  console.log(name, summary, image);
+  // if (name || summary || image)
+  //   res.status(404).send('las Dtos name y summary son requeridos');
+  // else {
+  try {
+    let recipeCreated = await Recipe.create({
+      name,
+      summary,
+      healthScore,
+      stepbyStep,
+      image,
+      createIndb,
+    });
+    let dietDb = await Diet.findAll({
+      where: {
+        name: diet,
+      },
+    });
+    recipeCreated.addDiet(dietDb); // agrego la dieta al modelo Recipe
+    res.send('Receta Creado con exito');
+  } catch (error) {
+    res.status(404).send(error + 'Erro al crear la Receta');
   }
 });
 

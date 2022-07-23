@@ -6,17 +6,17 @@ module.exports = (sequelize) => {
     'recipe',
     {
       id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true,
       },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       summary: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       healthScore: {
@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
       },
       /* hace Referencia al paso a paso de la comida */
       stepbyStep: {
-        type: DataTypes.TEXT,
+        type: DataTypes.ARRAY(DataTypes.TEXT),
       },
       image: {
         type: DataTypes.STRING,
@@ -37,7 +37,7 @@ module.exports = (sequelize) => {
       createIndb: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: true,
+        defaultValue: false,
       },
     },
     { timestamps: false }

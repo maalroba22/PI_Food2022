@@ -7,13 +7,11 @@ export default function Paginado({ recipepage, recipe, paginado }) {
   }
   return (
     <nav>
-      <ul className="page__list">
-        {pageNumbers?.map((number) => (
-          <li key={number} className="page__number">
-            <a onClick={() => paginado(number)}>{number}</a>;
-          </li>
-        ))}
-      </ul>
+      {pageNumbers?.map((number) => (
+        <button key={number.id} className="page__number">
+          <a onClick={() => paginado(number)}>{number}</a>
+        </button>
+      ))}
     </nav>
   );
 }

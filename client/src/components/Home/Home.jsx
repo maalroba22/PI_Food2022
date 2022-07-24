@@ -1,17 +1,27 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import { getAllrecipes } from '../../redux/actions/index';
+import {
+  getAllrecipes,
+  filterByorder,
+  getAllDiet,
+} from '../../redux/actions/index';
 import Search from './Search';
 import Card from './Card';
 import { Link } from 'react-router-dom';
 import Paginado from './Paginado';
+import './styles/home.css';
 
 const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllrecipes());
+    dispatch(getAllDiet());
   }, [dispatch]);
+
   const recipe = useSelector((state) => state.recipes);
+  const allDiet = useSelector((state) => state.diets);
+
+  const [order, setorder] = useState('');
   /* paginacion */
   const [currenpage, setcurrenpage] = useState(1);
   const [recipeperpage, setrecipeperpage] = useState(9);
@@ -24,6 +34,17 @@ const Home = () => {
     setcurrenpage(pageNumber);
   };
 
+  /* ordenar */
+  const healdorder = (e) => {};
+
+  /* dipach  mi filtro */
+  const handleorder = (e) => {
+    e.preventDefault();
+    dispatch(filterByorder(e.target.value));
+    setcurrenpage(1);
+    setorder(`ordenado ${e.target.value}`);
+  };
+
   return (
     <div>
       <Search />
@@ -32,7 +53,7 @@ const Home = () => {
       </div>
       <div className="filtros">
         {/* ordenar de a-z */}
-        <select>
+        <select onChange={(e) => handleorder(e)}>
           <option value="asc">A-Z</option>
           <option value="desc">Z-A</option>
         </select>
@@ -41,17 +62,17 @@ const Home = () => {
           <option value="default" default>
             seleccione..
           </option>
-          <option value="d1">diet 1</option>
-          <option value="d2">diet 2</option>
-          <option value="d3">diet 3</option>
+          {allDiet?.map((e) => (
+            <option value={e.name}>{e.name}</option>
+          ))}
         </select>
         {/* Filtrar por nivel de Comida hhealscore */}
-        <select>
+        <select onChange={(e) => healdorder(e)}>
           <option value="default" default>
             Seleccionar...
           </option>
-          <option value="mb">Mas Bajo</option>
-          <option value="ma">Mas Alto</option>
+          <option value="1">Mas Bajo</option>
+          <option value="2">Mas Alto</option>
         </select>
       </div>
 
@@ -65,14 +86,20 @@ const Home = () => {
       }
 
       <hr />
-      {/* mapeo allrecipe */}
-      {currenRecipes?.map((el) => {
-        return (
-          <Link to={'/Home' + el.id}>
-            <Card key={el.id} name={el.name} image={el.image} diet={el.diet} />
-          </Link>
-        );
-      })}
+      <div className="container__home">
+        {/* mapeo allrecipe */}
+        {currenRecipes?.map((recipe) => {
+          return (
+            <Card
+              /*  key={el.id}
+            name={el.name}
+            image={el.image}
+            diet={el.diets[0].name} */
+              data={recipe}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

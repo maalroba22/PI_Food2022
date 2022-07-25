@@ -1,13 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react';
-import {
-  getAllrecipes,
-  filterByorder,
-  getAllDiet,
-} from '../../redux/actions/index';
-import Search from './Search';
+import React, { useEffect } from 'react';
+import { getAllrecipes, getAllDiet } from '../../redux/actions/index';
 import Card from './Card';
-import { Link } from 'react-router-dom';
 import Paginado from './Paginado';
 import './styles/home.css';
 
@@ -20,86 +14,25 @@ const Home = () => {
 
   const recipe = useSelector((state) => state.recipes);
   const allDiet = useSelector((state) => state.diets);
+  const page = useSelector((state) => state.page);
 
-  const [order, setorder] = useState('');
-  /* paginacion */
-  const [currenpage, setcurrenpage] = useState(1);
-  const [recipeperpage, setrecipeperpage] = useState(9);
-  const indexofLastRecipe = currenpage * recipeperpage;
-  const indexOfFirsrecipe = indexofLastRecipe - recipeperpage;
-  const currenRecipes = recipe.slice(indexOfFirsrecipe, indexofLastRecipe);
-
-  /* modifico el estado de currenpage */
-  const paginado = (pageNumber) => {
-    setcurrenpage(pageNumber);
-  };
-
-  /* ordenar */
-  const healdorder = (e) => {};
-
-  /* dipach  mi filtro */
-  const handleorder = (e) => {
-    e.preventDefault();
-    dispatch(filterByorder(e.target.value));
-    setcurrenpage(1);
-    setorder(`ordenado ${e.target.value}`);
-  };
-
+  /*----------------- Paginado Nuevo----------------- */
+  let currenRecipes = [];
+  const tamañoRecipe = recipe.length;
+  const tamañoPorpagina = 9;
+  let indexFinal = tamañoPorpagina * page; // 9 pagina
+  let inicial = indexFinal - tamañoPorpagina; // 9-9=0
+  currenRecipes = recipe.slice(inicial, indexFinal);
+  console.log(recipe[107]);
   return (
     <div>
-      <Search />
-      <div className="nuevo__recype">
-        <Link to="/newrecipe">Crear Nueva Receta</Link>
-      </div>
-      <div className="filtros">
-        {/* ordenar de a-z */}
-        <select onChange={(e) => handleorder(e)}>
-          <option value="asc">A-Z</option>
-          <option value="desc">Z-A</option>
-        </select>
-        {/* filtar por dietas */}
-        <select>
-          <option value="default" default>
-            seleccione..
-          </option>
-          {allDiet?.map((e) => (
-            <option value={e.name}>{e.name}</option>
-          ))}
-        </select>
-        {/* Filtrar por nivel de Comida hhealscore */}
-        <select onChange={(e) => healdorder(e)}>
-          <option value="default" default>
-            Seleccionar...
-          </option>
-          <option value="1">Mas Bajo</option>
-          <option value="2">Mas Alto</option>
-        </select>
-      </div>
+      {/* Paginado */}
+      <Paginado tamañoRecipe={tamañoRecipe} tamañoPorpagina={tamañoPorpagina} />
+      {/* Card */}
 
-      {/* renderizo componente paginado */}
-      {
-        <Paginado
-          recipepage={recipeperpage}
-          recipe={recipe.length}
-          paginado={paginado}
-        />
-      }
-
-      <hr />
-      <div className="container__home">
-        {/* mapeo allrecipe */}
-        {currenRecipes?.map((recipe) => {
-          return (
-            <Card
-              /*  key={el.id}
-            name={el.name}
-            image={el.image}
-            diet={el.diets[0].name} */
-              data={recipe}
-            />
-          );
-        })}
-      </div>
+      {currenRecipes?.map((recipe) => (
+        <Card data={recipe} key={recipe.id} />
+      ))}
     </div>
   );
 };

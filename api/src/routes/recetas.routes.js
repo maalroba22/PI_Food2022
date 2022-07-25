@@ -27,9 +27,9 @@ router.get('/all', async (req, res) => {
 /* --------Busco mis Recetas po Id----------- */
 
 router.get('/:id', async (req, res) => {
-  const id = req.params.id;
-
-  const recipeTotal = await model.getAllRecipe();
+  const { id } = req.params;
+  console.log(id);
+  const recipeTotal = await model.getDbinfo();
   if (id) {
     let recipeId = await recipeTotal.filter((el) => el.id == id);
     recipeId.length

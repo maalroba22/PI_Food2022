@@ -4,10 +4,12 @@ import {
   GET_ALL_DIET,
   ORDER_BY_SCORE,
   PAGINADO,
+  RECIPE_DETAILS,
 } from '../actions/actions';
 const initialState = {
   recipes: [],
   diets: [],
+  details: [],
   page: 1,
 };
 
@@ -19,6 +21,13 @@ const Reducer = (state = initialState, action) => {
         recipes: action.payload,
       };
     }
+    case RECIPE_DETAILS: {
+      return {
+        ...state,
+        details: action.payload,
+      };
+    }
+
     case ORDER_BY_NAME:
       let sortArray =
         action.payload === 'asc'

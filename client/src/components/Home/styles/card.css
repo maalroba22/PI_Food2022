@@ -5,13 +5,13 @@
   justify-items: center;
 }
 .card {
-  width: 200px;
+  width: 220px;
   height: 350px;
   background-color: rgb(242, 155, 172);
 }
 .card__img img {
   width: 100%;
-  height: 200px;
+  height: 185px;
 }
 
 .card__footer {

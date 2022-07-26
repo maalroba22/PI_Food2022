@@ -4,3 +4,4 @@ export const ORDER_BY_NAME = 'ORDER_BY_NAME';
 export const GET_ALL_DIET = 'GET_ALL_DIET';
 export const ORDER_BY_SCORE = 'ORDER_BY_SCORE';
 export const PAGINADO = 'PAGINADO';
+export const RECIPE_DETAILS = 'SRECIPE_DETAILS';

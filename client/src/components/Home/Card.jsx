@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles/card.css';
+import { Link } from 'react-router-dom';
 
 export default function Card({ /* id, name, image, diets */ data }) {
   return (
@@ -14,6 +15,7 @@ export default function Card({ /* id, name, image, diets */ data }) {
 
         <div className="card__footer">
           <p>{data.diets[0]?.name}</p>
+
           <button className="btn__detalle">Detalle</button>
         </div>
       </div>

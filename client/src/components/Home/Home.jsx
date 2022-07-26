@@ -5,6 +5,7 @@ import Filtros from './filters/Filtros';
 import Card from './Card';
 import Paginado from './Paginado';
 import './styles/home.css';
+import Details from '../recipeDetail/Details';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -13,11 +14,11 @@ const Home = () => {
     dispatch(getAllDiet());
   }, [dispatch]);
 
-  const [order, setOrder] = useState('');
-
   const recipe = useSelector((state) => state.recipes);
   const allDiet = useSelector((state) => state.diets);
   const page = useSelector((state) => state.page);
+
+  const [order, setOrder] = useState('');
 
   /*----------------- Paginado Nuevo----------------- */
   let currenRecipes = [];
@@ -31,8 +32,9 @@ const Home = () => {
 
   return (
     <div>
+      <Details />
       {/* ------------Filtros----------*/}
-      <Filtros data={currenRecipes} diet={allDiet} order={setOrder} />
+      <Filtros diet={allDiet} setorder={setOrder} />
       <hr />
       {/* --------------Paginado-------------- */}
       <Paginado tamañoRecipe={tamañoRecipe} tamañoPorpagina={tamañoPorpagina} />

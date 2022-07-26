@@ -5,10 +5,13 @@ import {
   GET_ALL_DIET,
   ORDER_BY_SCORE,
   PAGINADO,
+  RECIPE_DETAILS,
 } from './actions';
+/* const api = axios.create({
+  baseURL: process.env.REACT_APP_API || 'http://localhost:3001',
+}); */
 
-/* Traemos todas las Recetas */
-
+/* --------------lISTAR TODAS LAS RECIPES-------------- */
 export const getAllrecipes = () => {
   console.log('getAllrecipes');
   return async function (dispatch) {
@@ -16,7 +19,9 @@ export const getAllrecipes = () => {
       return dispatch({ type: GET_ALL_RECIPE, payload: prueb.data });
     });
   };
-}; /* LISTAR TODAS LAS  DIETAS */
+};
+
+/* ---------------LISTAR TODAS LAS  DIETAS--------------- */
 
 export const getAllDiet = () => {
   return async function (dispatch) {
@@ -29,7 +34,19 @@ export const getAllDiet = () => {
   };
 };
 
-/*   Filtrar por orden a-z,z-a*/
+/* --------------BUSCAR RECIPE POR ID-------------- */
+export const recipesDetils = (id) => {
+  return async function (dispatch) {
+    await axios.get('/:id').then((recipe) => {
+      return dispatch({
+        type: RECIPE_DETAILS,
+        payload: recipe.data,
+      });
+    });
+  };
+};
+
+/*   -----------------Filtrar por orden a-z,z-a-----------------*/
 export function filterByorder(order) {
   return {
     type: ORDER_BY_NAME,
@@ -37,7 +54,7 @@ export function filterByorder(order) {
   };
 }
 
-/* FILTRAR POR PUNTUACION SCORE */
+/* ----------------FILTRAR POR PUNTUACION SCORE---------------- */
 export function filterByscore(score) {
   return {
     type: ORDER_BY_SCORE,

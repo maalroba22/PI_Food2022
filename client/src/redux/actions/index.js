@@ -6,6 +6,7 @@ import {
   ORDER_BY_SCORE,
   PAGINADO,
   RECIPE_DETAILS,
+  FILTER_BY_DIET,
 } from './actions';
 /* const api = axios.create({
   baseURL: process.env.REACT_APP_API || 'http://localhost:3001',
@@ -46,7 +47,16 @@ export const recipesDetils = (id) => {
   };
 };
 
-/*   -----------------Filtrar por orden a-z,z-a-----------------*/
+/*------------------- FITET BY DIETS------------------- */
+
+export function filterBydiet(diet) {
+  return {
+    type: FILTER_BY_DIET,
+    payload: diet,
+  };
+}
+
+/*   ----------------ORDENAR a-z,z-a-----------------*/
 export function filterByorder(order) {
   return {
     type: ORDER_BY_NAME,
@@ -54,7 +64,7 @@ export function filterByorder(order) {
   };
 }
 
-/* ----------------FILTRAR POR PUNTUACION SCORE---------------- */
+/* ----------------ORDER POR PUNTUACION SCORE---------------- */
 export function filterByscore(score) {
   return {
     type: ORDER_BY_SCORE,
@@ -62,7 +72,7 @@ export function filterByscore(score) {
   };
 }
 
-/* PAGINADO */
+/* ----------------------PAGINADO---------------------- */
 
 export function paginado(numero) {
   return (dispatch) => {

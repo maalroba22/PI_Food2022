@@ -1,0 +1,9 @@
+.container__navbar {
+  background-color: rgb(242, 127, 127);
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  padding: 5px;
+}

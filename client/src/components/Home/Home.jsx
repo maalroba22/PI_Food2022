@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
+
 import { getAllrecipes, getAllDiet } from '../../redux/actions/index';
 import Filtros from './filters/Filtros';
 import Card from './Card';
 import Paginado from './Paginado';
 import './styles/home.css';
-import Details from '../recipeDetail/Details';
+import Navbar from './navbar/Navbar';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -18,8 +19,13 @@ const Home = () => {
   const allDiet = useSelector((state) => state.diets);
   const page = useSelector((state) => state.page);
 
-  const [order, setOrder] = useState('');
+  const [order, setOrder] = useState(''); //para guardar los ordenamientos
+  const [socre, setScore] = useState('');
 
+  /* funcion para Reiniciar los filtros */
+  function handleClick() {
+    dispatch(getAllrecipes());
+  }
   /*----------------- Paginado Nuevo----------------- */
   let currenRecipes = [];
   const tamañoRecipe = recipe.length;
@@ -28,13 +34,18 @@ const Home = () => {
   let inicial = indexFinal - tamañoPorpagina; // 9-9=0
   currenRecipes = recipe.slice(inicial, indexFinal);
 
-  /* funcion para reiniciar el currenPage */
-
   return (
     <div>
-      <Details />
+      {/* -------------------Navbar------------------- */}
+      <Navbar />
+
       {/* ------------Filtros----------*/}
-      <Filtros diet={allDiet} setorder={setOrder} />
+      <Filtros
+        diet={allDiet}
+        setorder={setOrder}
+        setscore={setScore}
+        onclick={handleClick}
+      />
       <hr />
       {/* --------------Paginado-------------- */}
       <Paginado tamañoRecipe={tamañoRecipe} tamañoPorpagina={tamañoPorpagina} />

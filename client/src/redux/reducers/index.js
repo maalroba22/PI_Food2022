@@ -5,9 +5,11 @@ import {
   ORDER_BY_SCORE,
   PAGINADO,
   RECIPE_DETAILS,
+  FILTER_BY_DIET,
 } from '../actions/actions';
 const initialState = {
   recipes: [],
+  recipesfiterdit: [], //copia de recipes
   diets: [],
   details: [],
   page: 1,
@@ -25,6 +27,22 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         details: action.payload,
+      };
+    }
+
+    case FILTER_BY_DIET: {
+      const newRecipes = state.recipes;
+      const recipesFilterdiet =
+        action.payload === 'all'
+          ? newRecipes
+          : newRecipes.filter((el) => {
+              let names = el.diets.map((d) => d.name);
+              if (names.includes(action.payload)) return el;
+            });
+
+      return {
+        ...state,
+        recipes: recipesFilterdiet,
       };
     }
 
@@ -56,7 +74,7 @@ const Reducer = (state = initialState, action) => {
     }
     case ORDER_BY_SCORE: {
       let sortscore =
-        action.payload === 'bajo'
+        action.payload === 'asc'
           ? state.recipes.sort(function (a, b) {
               if (a.healthScore > b.healthScore) return 1;
               if (a.healthScore < b.healthScore) return -1;

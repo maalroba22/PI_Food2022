@@ -14,7 +14,11 @@ export default function Card({ /* id, name, image, diets */ data }) {
         </div>
 
         <div className="card__footer">
-          <p>{data.diets[0]?.name}</p>
+          <ul>
+            {data.diets.map((d) => (
+              <li key={d.name}>{d.name}</li>
+            ))}
+          </ul>
 
           <button className="btn__detalle">Detalle</button>
         </div>

@@ -27,7 +27,7 @@ const getApiInfo = async () => {
       recipeCreated.addDiet(dietDb);
     });
   } else {
-    console.log('los datos de recetas ya estan cargados');
+    console.log('los datos de recetas ya estan cargados 202');
   }
 };
 /* Obtengo los Datos de la base de Datos */

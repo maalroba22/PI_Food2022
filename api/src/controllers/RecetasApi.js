@@ -13,6 +13,8 @@ module.exports = {
       const diet = await dietApi.data.results.map((el) => el.diets);
       let data = diet.flat();
       const typeDiet = [...new Set(data)];
+      
+      
       typeDiet.forEach((el) => {
         Diet.findOrCreate({
           where: { name: el },

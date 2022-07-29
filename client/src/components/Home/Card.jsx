@@ -19,8 +19,9 @@ export default function Card({ /* id, name, image, diets */ data }) {
               <li key={d.name}>{d.name}</li>
             ))}
           </ul>
-
-          <button className="btn__detalle">Detalle</button>
+          <Link to={`/details/${data.id}`}>
+            <button className="btn__detalle">Detalle</button>
+          </Link>
         </div>
       </div>
     </div>

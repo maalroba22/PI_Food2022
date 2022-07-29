@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 export default function Paginado({ tamañoRecipe, tamañoPorpagina }) {
   const dispach = useDispatch();
   const pageNumbers = [];
-  for (let i = 1; i < Math.ceil(tamañoRecipe / tamañoPorpagina); i++) {
-    pageNumbers.push(i);
+  for (let i = 0; i < Math.ceil(tamañoRecipe / tamañoPorpagina); i++) {
+    pageNumbers.push(i + 1);
   }
 
   function handelClickpage(numero) {

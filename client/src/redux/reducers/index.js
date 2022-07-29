@@ -6,6 +6,7 @@ import {
   PAGINADO,
   RECIPE_DETAILS,
   FILTER_BY_DIET,
+  SEARCH_NAME_RECYPE,
 } from '../actions/actions';
 const initialState = {
   recipes: [],
@@ -21,6 +22,7 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         recipes: action.payload,
+        recipesFilterdiet: action.payload,
       };
     }
     case RECIPE_DETAILS: {
@@ -30,6 +32,12 @@ const Reducer = (state = initialState, action) => {
       };
     }
 
+    case SEARCH_NAME_RECYPE: {
+      return {
+        ...state,
+        recipes: action.payload,
+      };
+    }
     case FILTER_BY_DIET: {
       const newRecipes = state.recipes;
       const recipesFilterdiet =
@@ -47,7 +55,16 @@ const Reducer = (state = initialState, action) => {
     }
 
     case ORDER_BY_NAME:
-      let sortArray =
+      /* localeCompare */
+
+      const sortArray = [...state.recipes];
+      if (action.payload === 'asc') {
+        sortArray.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (action.payload === 'des') {
+        sortArray.sort((a, b) => b.name.localeCompare(a.name));
+      }
+
+      /* let sortArray =
         action.payload === 'asc'
           ? state.recipes.sort(function (a, b) {
               if (a.name > b.name) return 1;
@@ -56,11 +73,11 @@ const Reducer = (state = initialState, action) => {
               } else return 0;
             })
           : /* forma desendente DES */
-            state.recipes.sort(function (a, b) {
+      /*  state.recipes.sort(function (a, b) {
               if (a.name > b.name) return -1;
               if (a.name < b.name) return 1;
               else return 0;
-            });
+            });  */
 
       return {
         ...state,

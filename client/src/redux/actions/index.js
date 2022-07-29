@@ -7,6 +7,7 @@ import {
   PAGINADO,
   RECIPE_DETAILS,
   FILTER_BY_DIET,
+  SEARCH_NAME_RECYPE,
 } from './actions';
 /* const api = axios.create({
   baseURL: process.env.REACT_APP_API || 'http://localhost:3001',
@@ -35,14 +36,28 @@ export const getAllDiet = () => {
   };
 };
 
+/* BUSCAR LAS RECIPES POR NOMBRE */
+export const getNamerecipes = (name) => {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get('recipes/all?name=' + name);
+      return dispatch({
+        type: SEARCH_NAME_RECYPE,
+        payload: json.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
 /* --------------BUSCAR RECIPE POR ID-------------- */
 export const recipesDetils = (id) => {
   return async function (dispatch) {
-    await axios.get('/:id').then((recipe) => {
-      return dispatch({
-        type: RECIPE_DETAILS,
-        payload: recipe.data,
-      });
+    let json = await axios.get('recipes/' + id);
+    return dispatch({
+      type: RECIPE_DETAILS,
+      payload: json.data,
     });
   };
 };

@@ -26,17 +26,17 @@ router.get('/all', async (req, res) => {
 
 /* --------Busco mis Recetas po Id----------- */
 
-router.get('/id/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
-  console.log(id);
-  const recipeTotal = await Recipe.findByPk(id);
-  res.status(200).send(recipeTotal);
-  // if (id) {
-  //   let recipeId = await recipeTotal.filter((el) => el.id == id);
-  //   recipeId.length
-  //     ? res.status(200).json(recipeId)
-  //     : res.status(404).send('No se Encontro Receta con el id: ' + id);
-  // }
+  let recipeTotal = await model.getDbinfo();
+  /* const recipeTotal = await Recipe.findByPk(id); */
+  /* res.status(200).send(recipeTotal); */
+  if (id) {
+    let recipeId = await recipeTotal.filter((el) => el.id == id);
+    recipeId.length
+      ? res.status(200).json(recipeId)
+      : res.status(404).send('No se Encontro Receta con el id: ' + id);
+  }
 });
 
 /*-------Agrega un Receta y tipos de Dietas------*/

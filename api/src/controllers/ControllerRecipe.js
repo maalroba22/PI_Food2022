@@ -15,7 +15,7 @@ const getApiInfo = async () => {
         summary: el.summary,
         healthScore: el.healthScore,
         stepbyStep: el.analyzedInstructions[0]?.steps.map((paso) => {
-          return `<b>${paso.number}</b> ${paso.step}<br>`;
+          return `<b>${paso.number}</b>   ${paso.step}  `;
         }),
         image: el.image,
       });

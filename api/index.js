@@ -27,6 +27,6 @@ conn.sync({ force: false }).then(() => {
   server.listen(3001, async () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
     await diet();
-    await getApiInfo();
+    await getApiInfo({});
   });
 });

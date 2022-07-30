@@ -11,7 +11,7 @@ function App() {
       <Switch>
         <Route path="/" exact render={() => <Landing />} />
         <Route path="/Home" component={Home} />
-        <Route path="/newrecipe" exact render={() => <Recipes />} />
+        <Route path="/addrecipe" exact render={() => <Recipes />} />
         <Route path="/details/:id" exact render={() => <Details />} />
         <Redirect to="/" />
       </Switch>

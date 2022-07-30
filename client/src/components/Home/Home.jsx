@@ -7,6 +7,7 @@ import Card from './Card';
 import Paginado from './Paginado';
 import './styles/home.css';
 import Navbar from './navbar/Navbar';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -49,6 +50,11 @@ const Home = () => {
       <hr />
       {/* --------------Paginado-------------- */}
       <Paginado tamañoRecipe={tamañoRecipe} tamañoPorpagina={tamañoPorpagina} />
+
+      <Link to="/addrecipe">
+        <h3>Crear Nueva Receta</h3>
+      </Link>
+
       {/* ----------Card ----------*/}
       <div className="container__home">
         {currenRecipes?.map((recipe) => (

@@ -8,6 +8,7 @@ import {
   RECIPE_DETAILS,
   FILTER_BY_DIET,
   SEARCH_NAME_RECYPE,
+  POST_ADD_RECIPES,
 } from './actions';
 /* const api = axios.create({
   baseURL: process.env.REACT_APP_API || 'http://localhost:3001',
@@ -15,11 +16,19 @@ import {
 
 /* --------------lISTAR TODAS LAS RECIPES-------------- */
 export const getAllrecipes = () => {
-  console.log('getAllrecipes');
   return async function (dispatch) {
     await axios.get('/recipes/all').then((prueb) => {
       return dispatch({ type: GET_ALL_RECIPE, payload: prueb.data });
     });
+  };
+};
+
+/*  ADD LAS RECIPES A MI DATABADSE */
+export const postAddRecipes = (payload) => {
+  return async function (dispatch) {
+    const data = await axios.post('/recipes', payload);
+    console.log(data);
+    return data;
   };
 };
 

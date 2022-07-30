@@ -6,3 +6,4 @@ export const ORDER_BY_SCORE = 'ORDER_BY_SCORE';
 export const PAGINADO = 'PAGINADO';
 export const RECIPE_DETAILS = 'RECIPE_DETAILS';
 export const FILTER_BY_DIET = 'FILTER_BY_DIET';
+export const POST_ADD_RECIPES = 'POST_ADD_RECIPES';

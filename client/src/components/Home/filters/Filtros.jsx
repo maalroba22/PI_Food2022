@@ -17,7 +17,7 @@ export default function Filtros({ diet, setorder, setscore, onclick }) {
 
   function handleOrderScore(e) {
     dispatch(filterByscore(e.target.value));
-    setscore(e.target.value);
+    setorder(e.target.value);
   }
 
   function handleFilterDiets(e) {

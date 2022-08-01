@@ -23,6 +23,7 @@ export default function Details() {
                 <li key={d.name}>{d.name}</li>
               ))}
             </ul>
+            <p>{el.createIndb}</p>
             <p>{el.healthScore}</p>
             <p dangerouslySetInnerHTML={{ __html: el?.stepbyStep }}></p>
 

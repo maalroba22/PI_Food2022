@@ -42,7 +42,7 @@ export default function Filtros({ diet, setorder, setscore, onclick }) {
           All
         </option>
         {diet?.map((el) => (
-          <option vakue={el.name} key={el.id}>
+          <option value={el.name} key={el.id}>
             {el.name}
           </option>
         ))}

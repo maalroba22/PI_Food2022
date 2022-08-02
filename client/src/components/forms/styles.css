@@ -40,6 +40,12 @@ input:focus {
   outline: none;
   border-bottom: solid 2px;
   border-color: rgb(64, 64, 146);
+  transition: 0.2s linear;
+}
+input:hover {
+  border-bottom: solid 1px;
+  border-color: rgb(64, 64, 146);
+  transition: 0.1s linear;
 }
 select {
   border-style: none;
@@ -49,7 +55,7 @@ select {
   color: grey;
 }
 
-select:focus {
+select:hover {
   outline: none;
   border-bottom: solid 2px;
   border-color: rgb(64, 64, 146);

@@ -35,12 +35,11 @@ input {
   border-bottom: solid 1px;
   color: grey;
 }
-input:focus {
-  border: none;
-}
+
 input:focus {
   outline: none;
-  border: none;
+  border-bottom: solid 2px;
+  border-color: rgb(64, 64, 146);
 }
 select {
   border-style: none;
@@ -49,13 +48,27 @@ select {
   border-bottom: solid 1px;
   color: grey;
 }
-select:focus {
-  border: none;
-}
+
 select:focus {
   outline: none;
-  border: none;
+  border-bottom: solid 2px;
+  border-color: rgb(64, 64, 146);
 }
+
+textarea {
+  border-style: none;
+  height: 30px;
+  border-radius: 3px;
+  border-bottom: solid 1px;
+  color: grey;
+}
+
+textarea:focus {
+  outline: none;
+  border-bottom: solid 2px;
+  border-color: rgb(64, 64, 146);
+}
+
 .forms__info {
   display: flex;
   flex-wrap: wrap;
@@ -75,5 +88,11 @@ ul li {
 }
 
 .boton {
-  background-color: #47474a;
+  background-color: rgb(33, 115, 239);
+  color: aliceblue;
+}
+.boton-inactivo {
+  background-color: rgb(33, 115, 239);
+  color: aliceblue;
+  opacity: 0.5;
 }

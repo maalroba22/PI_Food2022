@@ -26,9 +26,15 @@ export const getAllrecipes = () => {
 /*  ADD LAS RECIPES A MI DATABADSE */
 export const postAddRecipes = (payload) => {
   return async function (dispatch) {
-    const data = await axios.post('/recipes', payload);
-    console.log(data);
-    return data;
+    try {
+      const data = await axios.post('/recipes', payload);
+      console.log(data);
+      alert('Receta Creada Exitosa');
+      return data;
+    } catch (error) {
+      console.log(error);
+      alert('Receta Fallida');
+    }
   };
 };
 

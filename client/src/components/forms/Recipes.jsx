@@ -4,7 +4,7 @@ import { getAllDiet, postAddRecipes } from '../../redux/actions/index';
 import { Link, useHistory } from 'react-router-dom';
 
 import food from '../../assets/img/food1.svg';
-import defaul from '../../assets/img/default.png';
+
 import './styles.css';
 
 export default function Recipes() {
@@ -20,7 +20,7 @@ export default function Recipes() {
     name: '',
     summary: '',
     healthScore: '',
-    stepbyStep: '',
+    stepbyStep: [],
     image: '',
     diet: [],
     createIndb: true,
@@ -52,10 +52,17 @@ export default function Recipes() {
     });
   }
 
+  function handleStep(e) {
+    setInput({
+      ...input,
+      stepbyStep: [e.target.value],
+    });
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(postAddRecipes(input));
-    alert('receta Creada con Exito');
+    // alert('receta Creada con Exito');
     setInput({
       name: '',
       summary: '',
@@ -66,14 +73,18 @@ export default function Recipes() {
     });
     histori.push('/home');
   }
-
-  /* Validacion de informacion */
+  function handleDelete(el) {
+    console.log(el);
+    setInput({
+      ...input,
+      diet: input.diet.filter((d) => d !== el),
+    });
+  }
 
   return (
     <>
       <Link to="/home">
         <button>Volver</button>
-        <h1>CREAR NUEVA RECETA</h1>
       </Link>
       <div className="container__forms">
         <div className="container__logo">
@@ -91,8 +102,9 @@ export default function Recipes() {
           </div>
         </div>
         <div className="forms__info">
+          <h1>CREAR NUEVA RECETA</h1>
           <form onSubmit={handleSubmit}>
-            <div>
+            <div className="input__text">
               <input
                 className={errors.name && 'danger'}
                 type="text"
@@ -101,8 +113,8 @@ export default function Recipes() {
                 name="name"
                 value={input.name}
               />
-              {errors.name && <p className="danger">{errors.name}</p>}
             </div>
+            {errors.name && <p className="danger">{errors.name}</p>}
 
             <div>
               <textarea
@@ -111,8 +123,10 @@ export default function Recipes() {
                 rows="3"
                 value={input.summary}
                 onChange={inputHandleChangue}
+                placeholder="Ingrese una Description de la Receta"
               />
             </div>
+            {errors.summary && <p className="danger">{errors.summary}</p>}
             <div>
               <span>{input.healthScore}</span>
               <input
@@ -124,17 +138,19 @@ export default function Recipes() {
                 onChange={rangeHhandleChangue}
               />
             </div>
-            <div>
-              <input
-                type="text"
+
+            <div className="input__text">
+              <textarea
                 name="stepbyStep"
-                placeholder="paso a paso"
+                cols="47"
+                rows="3"
                 value={input.stepbyStep}
-                onChange={inputHandleChangue}
+                placeholder="Ingrese los pasos par crear la receta"
+                onChange={handleStep}
               />
             </div>
 
-            <div>
+            <div className="input__text">
               <input
                 type="text"
                 name="image"
@@ -146,16 +162,37 @@ export default function Recipes() {
             <div>
               <select name="diet" onChange={(e) => selectHandleChangue(e)}>
                 {diets?.map((el) => (
-                  <option value={el.name} key={el.id}>
-                    {el.name}
-                  </option>
+                  <option value={el.name}>{el.name}</option>
                 ))}
               </select>
               <ul>
-                <li>{input.diet.map((el) => el + '')}</li>
+                {input.diet.map((el) => (
+                  <div className="dev__diet" key={el.id}>
+                    <li>{el}</li>
+                    {
+                      <span
+                        key={el.id}
+                        className="buton__x"
+                        onClick={() => handleDelete(el)}
+                      >
+                        x
+                      </span>
+                    }
+                  </div>
+                ))}
               </ul>
             </div>
-            <input className="boton" type="submit" value="Guardar" />
+
+            {!input.name || !input.summary ? (
+              <input
+                type="submit"
+                value=" Guardar Recipes"
+                className="boton-inactivo"
+                disabled
+              />
+            ) : (
+              <input type="submit" value=" Guardar Recipes" className="boton" />
+            )}
           </form>
         </div>
       </div>
@@ -168,6 +205,9 @@ export function validate(input) {
   let errors = {};
   if (!input.name) {
     errors.name = '! Recipe  is required';
+  }
+  if (!input.summary) {
+    errors.summary = '! summary  is required';
   }
 
   return errors;

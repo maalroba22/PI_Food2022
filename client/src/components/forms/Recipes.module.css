@@ -7,6 +7,7 @@
 }
 .conatiner__main {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
 }
@@ -38,7 +39,7 @@ input.danger {
   border-bottom: 2px solid red;
 }
 
-input {
+.forms__info input {
   border-style: none;
   height: 30px;
   border-radius: 3px;
@@ -46,20 +47,15 @@ input {
   color: grey;
   margin-bottom: 10px;
   width: 300px;
+  outline: none;
 }
 
-input:focus {
-  outline: none;
-  border-bottom: solid 2px;
-  border-color: rgb(33, 115, 239);
-  transition: 0.2s linear;
-}
-input:hover {
+.forms__info input:hover {
   border-bottom: solid 1px;
-  border-color: rgb(33, 115, 239);
+  border-color: #f5a055;
   transition: 0.1s linear;
 }
-select {
+.forms__info select {
   border-style: none;
   height: 30px;
   border-radius: 3px;
@@ -67,36 +63,37 @@ select {
   color: grey;
   margin-bottom: 10px;
   width: 300px;
-}
-
-select:focus {
   outline: none;
+}
+.forms__info select:hover {
   border-bottom: solid 1px;
-  border-color: rgb(33, 115, 239);
+  border-color: #f5a055;
+  transition: 0.1s linear;
 }
 
-textarea {
+.forms__info textarea {
   border-style: none;
   height: 30px;
   border-radius: 3px;
   border-bottom: solid 1px;
   color: grey;
+  outline: none;
 }
 
-textarea:focus {
+.forms__info textarea:hover {
   outline: none;
   border-bottom: solid 1px;
-  border-color: rgb(33, 115, 239);
+  border-color: #f5a055;
 }
 
 .boton {
-  background-color: #f5a055;
-  color: aliceblue;
+  background-color: rgb(33, 115, 239);
+  color: white;
   cursor: pointer;
 }
-.boton__inactivo {
+.boton__add input {
   background-color: rgb(33, 115, 239);
-  color: aliceblue;
+  color: white;
   opacity: 0.5;
   margin-bottom: 15px;
   align-items: center;

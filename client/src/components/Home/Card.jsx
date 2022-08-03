@@ -1,18 +1,20 @@
 import React from 'react';
 import './styles/card.css';
 import { Link } from 'react-router-dom';
-import defaul from '../../assets/img/default.png';
+import defaul from '../../assets/img/juse.jpg';
 
 export default function Card({ /* id, name, image, diets */ data }) {
   return (
     <div className="container">
       <div key={data.id} className="card">
         <div className="card__img">
-          {data.imagen !== null ? (
-            <img src={data.image} alt="img Not fount" />
-          ) : (
-            <img src={defaul} alt="img Not fount" />
-          )}
+          <img
+            src={data.image}
+            alt="Imagen de la Receta No Fount"
+            onError={(e) => {
+              e.target.src = defaul;
+            }}
+          />
         </div>
         <div className="card__header">
           <h5>{data.name}</h5>

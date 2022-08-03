@@ -2,6 +2,7 @@ import { React, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { recipesDetils } from '../../redux/actions/index';
+import defaul from '../../assets/img/juse.jpg';
 
 export default function Details() {
   const dispatch = useDispatch();
@@ -17,7 +18,13 @@ export default function Details() {
         {data.map((el) => (
           <div className="detalle__img" key={el.id}>
             <p>{el.name}</p>
-            <img src={el.image} alt=" Not Fount" />
+            <img
+              src={el.image}
+              alt=" Not Fount"
+              onError={(e) => {
+                e.target.src = defaul;
+              }}
+            />
             <ul>
               {el.diets.map((d) => (
                 <li key={d.name}>{d.name}</li>

@@ -85,13 +85,11 @@ export default function Recipes() {
 
   return (
     <>
-      <Link to="/home">
-        <button>Volver</button>
-      </Link>
       <div className={s.container}>
         <h1>
-          <samp>Crear</samp>Recetas
+          <Link to="/home">Ir a Menu...</Link>
         </h1>
+
         <div className={s.conatiner__main}>
           <div className={s.order__image}>
             <img src={order_image} alt="Imagen No Fount" />
@@ -171,6 +169,7 @@ export default function Recipes() {
                     onChange={inputHandleChangue}
                   />
                 </div>
+
                 <div>
                   <select name="diet" onChange={(e) => selectHandleChangue(e)}>
                     {diets?.map((el) => (
@@ -178,20 +177,20 @@ export default function Recipes() {
                     ))}
                   </select>
                   <ul>
-                    {input.diet.map((el) => (
-                      <div className={s.diet} key={el.id}>
-                        <li>{el}</li>
-                        {
+                    <div className={s.diet}>
+                      {input.diet.map((el) => (
+                        <div className={s.chip} key={el.id}>
+                          <li>{el}</li>
                           <span
-                            key={el.id}
+                            /*  key={el.id} */
                             className={s.buton__x}
                             onClick={() => handleDelete(el)}
                           >
                             x
                           </span>
-                        }
-                      </div>
-                    ))}
+                        </div>
+                      ))}
+                    </div>
                   </ul>
                 </div>
 

@@ -7,7 +7,6 @@ import Card from './Card';
 import Paginado from './Paginado';
 import './styles/home.css';
 import Navbar from './navbar/Navbar';
-import { Link } from 'react-router-dom';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -41,22 +40,28 @@ const Home = () => {
       <Navbar />
 
       {/* ------------Filtros----------*/}
-      <Filtros
-        diet={allDiet}
-        setorder={setOrder}
-        setscore={setScore}
-        onclick={handleClick}
-      />
-      <hr />
-      {/* --------------Paginado-------------- */}
-      <Paginado tamañoRecipe={tamañoRecipe} tamañoPorpagina={tamañoPorpagina} />
 
-      <Link to="/addrecipe">
-        <h3>Crear Nueva Receta</h3>
-      </Link>
-
+      <div className="filter_paginate">
+        <div className="filtros">
+          {
+            <Filtros
+              diet={allDiet}
+              setorder={setOrder}
+              setscore={setScore}
+              onclick={handleClick}
+            />
+          }
+        </div>
+        <div className="paginate">
+          {/* --------------Paginado-------------- */}
+          <Paginado
+            tamañoRecipe={tamañoRecipe}
+            tamañoPorpagina={tamañoPorpagina}
+          />
+        </div>
+      </div>
       {/* ----------Card ----------*/}
-      <div className="container__home">
+      <div className="gallary_image_box">
         {currenRecipes?.map((recipe) => (
           <Card data={recipe} key={recipe.id} />
         ))}

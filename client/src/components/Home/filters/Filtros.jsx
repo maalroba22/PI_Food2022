@@ -1,12 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { getAllrecipes } from '../../../redux/actions';
 import {
   filterByorder,
   filterByscore,
   filterBydiet,
 } from '../../../redux/actions';
 
-export default function Filtros({ diet, setorder, setscore, onclick }) {
+export default function Filtros({ diet, setorder, setscore /* onclick */ }) {
   const dispatch = useDispatch();
 
   function handleOderByname(e) {
@@ -17,7 +18,7 @@ export default function Filtros({ diet, setorder, setscore, onclick }) {
 
   function handleOrderScore(e) {
     dispatch(filterByscore(e.target.value));
-    setorder(e.target.value);
+    setscore(e.target.value);
   }
 
   function handleFilterDiets(e) {
@@ -25,6 +26,9 @@ export default function Filtros({ diet, setorder, setscore, onclick }) {
   }
 
   /* corregir handle reset filter */
+  function handleClick() {
+    dispatch(getAllrecipes());
+  }
 
   return (
     <div className="container__filtros">
@@ -54,7 +58,7 @@ export default function Filtros({ diet, setorder, setscore, onclick }) {
         <option value="des">Mas Alto..</option>
       </select>
 
-      <button onClick={onclick}>Reset Filter</button>
+      <button onClick={/* onclick */ handleClick}>Reset Filter</button>
     </div>
   );
 }

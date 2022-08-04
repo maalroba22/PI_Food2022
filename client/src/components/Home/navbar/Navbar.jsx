@@ -1,6 +1,8 @@
 import React from 'react';
 import Search from './Search';
 import logonav from '../../../assets/img/logo.png';
+import { Link } from 'react-router-dom';
+
 import './navbar.css';
 
 const Navbar = () => {
@@ -11,6 +13,9 @@ const Navbar = () => {
       </div>
 
       <Search />
+      <Link to="/addrecipe">
+        <h3>Crear Nueva Receta</h3>
+      </Link>
     </div>
   );
 };

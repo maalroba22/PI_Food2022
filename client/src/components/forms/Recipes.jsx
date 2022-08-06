@@ -204,7 +204,7 @@ export default function Recipes() {
                     />
                   </div>
                 ) : (
-                  <div className={s.boton__add}>
+                  <div className={s.boton__new}>
                     <input
                       type="submit"
                       value=" Guardar Recipes"
@@ -233,8 +233,7 @@ export function validate(input) {
   let errors = {};
   if (!input.name) {
     errors.name = '! Recipe  is required';
-  }
-  if (!input.summary) {
+  } else if (!input.summary) {
     errors.summary = '! summary  is required';
   }
 

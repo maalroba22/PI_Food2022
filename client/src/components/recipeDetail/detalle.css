@@ -1,0 +1,46 @@
+.detalle {
+  display: flex;
+  height: 77vh;
+  margin-top: 2rem;
+  background-image: url('../../assets/img/bg1.jpg');
+}
+
+/* etilo lado izquierdo */
+.detalle__left {
+  display: flex;
+  position: relative;
+  flex: 1;
+  flex-direction: column;
+  gap: 2rem;
+}
+.detalle__left .d__diets {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.detalle__left .d__diets p {
+  min-height: 30px;
+  max-height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: linear-gradient(180deg, #fdc50f 26.71%, #fb982f 99.36%);
+  border-radius: 15px;
+  padding: 0 4px;
+  margin: 2px;
+}
+
+.detalle__right {
+  flex: 1;
+  position: relative;
+  min-height: 77vh;
+  overflow-y: auto;
+}
+.detalle__right .d__desc {
+  margin: 0 4rem 1rem;
+}
+.detalle__right .d__pasos {
+  margin: 0 4rem 1rem;
+}

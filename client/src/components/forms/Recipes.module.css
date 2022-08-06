@@ -88,13 +88,24 @@ input.danger {
 
 .boton {
   background-color: rgb(33, 115, 239);
-  color: white;
   cursor: pointer;
+}
+.boton input {
+  color: white;
 }
 .boton__add input {
   background-color: rgb(33, 115, 239);
   color: white;
   opacity: 0.5;
+  margin-bottom: 15px;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+.boton__new input {
+  background-color: rgb(33, 115, 239);
+  color: white;
+
   margin-bottom: 15px;
   align-items: center;
   cursor: pointer;

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getNamerecipes } from '../../../redux/actions/index';
+import './navbar.css';
 export default function Search() {
   const dispatch = useDispatch();
   const [name, setName] = useState('');

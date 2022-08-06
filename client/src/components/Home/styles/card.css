@@ -27,7 +27,7 @@
   text-align: center;
   margin: 10px auto 10px auto;
   font-size: 20px;
-  color: #2a1e01;
+  color: #60615f;
   min-height: 60px;
   max-height: 60px;
   overflow-y: auto;
@@ -59,8 +59,10 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: rgb(246, 241, 241);
-  background: #708853;
+  color: rgb(246, 243, 243);
+  /* background: #708853; */
+  background: linear-gradient(180deg, #98ad7e.51%, #3a4e22 99.36%);
+
   padding: 8px 10px;
   margin-top: 10px;
   transition: 0.3s;

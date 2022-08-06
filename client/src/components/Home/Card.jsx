@@ -2,11 +2,6 @@ import React from 'react';
 import './styles/card.css';
 import { Link } from 'react-router-dom';
 import defaul from '../../assets/img/juse.jpg';
-import dayrifree from '../../assets/icon/DAYRY FRE.png';
-import glutenfree from '../../assets/icon/GLUTEN FRE.png';
-import laptoovo from '../../assets/icon/LACTP OVO VEGETARIAN.png';
-import vegan from '../../assets/icon/VEGAN.png';
-import vegetarian from '../../assets/icon/VEGETARIAN.png';
 
 export default function Card({ /* id, name, image, diets */ data }) {
   return (

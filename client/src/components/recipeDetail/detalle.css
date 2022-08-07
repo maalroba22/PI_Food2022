@@ -44,3 +44,14 @@
 .detalle__right .d__pasos {
   margin: 0 4rem 1rem;
 }
+.d__range input {
+  width: 280px;
+  cursor: pointer;
+}
+.d__back {
+  float: left;
+  width: 60px;
+  height: 50px;
+  background-color: rebeccapurple;
+  border-radius: 0px 20px 20px 0;
+}

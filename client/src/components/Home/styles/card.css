@@ -4,6 +4,7 @@
   padding-top: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-image: url('../../LandigPages/img/bg1.jpg');
+  box-shadow: 0px 20px 24px 3px rgba(251, 161, 40, 0.42);
 }
 .menu__card .menu__image {
   width: 300px;
@@ -38,11 +39,15 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: #c0ceaf;
+  /*   background-color: #c0ceaf; */
   border-radius: 15px;
   padding: 0 4px;
   margin: 2px;
   font-weight: lighter;
+  font-size: 20px;
+  /* 
+  background: var(--orange); */
+  color: var(--orange);
 }
 .menu__info .diet__info {
   display: flex;
@@ -61,7 +66,7 @@
   text-decoration: none;
   color: rgb(246, 243, 243);
   /* background: #708853; */
-  background: linear-gradient(180deg, #98ad7e.51%, #3a4e22 99.36%);
+  background: linear-gradient(180deg, #ffd65a.51%, #fd8d15 99.36%);
 
   padding: 8px 10px;
   margin-top: 10px;

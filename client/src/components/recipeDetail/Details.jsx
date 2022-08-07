@@ -45,6 +45,9 @@ export default function Details() {
         <div className="detalle" key={el.id}>
           <div className="detalle__left">
             <div className="detalle_name">
+              <div className="d__back">
+                <span>back</span>
+              </div>
               <h1>{el.name}</h1>
               <img
                 src={el.image}
@@ -56,7 +59,7 @@ export default function Details() {
               <span>
                 <p>Score</p>
               </span>
-              <div className="d__raange">
+              <div className="d__range">
                 <input type="range" value={el.healthScore} />
                 <span>{el.healthScore}</span>
               </div>

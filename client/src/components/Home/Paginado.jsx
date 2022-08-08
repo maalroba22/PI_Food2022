@@ -1,6 +1,7 @@
 import React from 'react';
 import { paginado } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
+import './styles/Paginado.css';
 
 export default function Paginado({ tamañoRecipe, tamañoPorpagina }) {
   const dispach = useDispatch();
@@ -13,10 +14,14 @@ export default function Paginado({ tamañoRecipe, tamañoPorpagina }) {
     dispach(paginado(numero));
   }
   return (
-    <div className="container__paginado">
+    <div className="container__paginado ">
       {pageNumbers.map((page) => {
         return (
-          <button key={page} onClick={() => handelClickpage(page)}>
+          <button
+            className="button__paginado"
+            key={page}
+            onClick={() => handelClickpage(page)}
+          >
             {page}
           </button>
         );

@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { recipesDetils } from '../../redux/actions/index';
 import defaul from '../../assets/img/juse.jpg';
 import './detalle.css';
+import { FaArrowLeft } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export default function Details() {
   const dispatch = useDispatch();
@@ -45,9 +47,13 @@ export default function Details() {
         <div className="detalle" key={el.id}>
           <div className="detalle__left">
             <div className="detalle_name">
-              <div className="d__back">
-                <span>back</span>
-              </div>
+              <Link to="/home">
+                <div className="d__back">
+                  <p>
+                    <FaArrowLeft />
+                  </p>
+                </div>
+              </Link>
               <h1>{el.name}</h1>
               <img
                 src={el.image}
@@ -79,7 +85,7 @@ export default function Details() {
               <h1>summary</h1>
               <p dangerouslySetInnerHTML={{ __html: el?.summary }}></p>
             </div>
-            <h1>stepbyStep</h1>
+            {!el.stepbyStep ? '' : <h1>StepbyStep </h1>}
             <div className="d__pasos">
               <p dangerouslySetInnerHTML={{ __html: el?.stepbyStep }}></p>
             </div>

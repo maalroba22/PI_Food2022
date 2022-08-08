@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { getAllrecipes } from '../../../redux/actions';
+import './Filter.css';
 import {
   filterByorder,
   filterByscore,

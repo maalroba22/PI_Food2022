@@ -50,8 +50,12 @@
 }
 .d__back {
   float: left;
-  width: 60px;
+  width: 70px;
   height: 50px;
-  background-color: rebeccapurple;
   border-radius: 0px 20px 20px 0;
+  background-color: var(--orange);
+}
+.detalle_name .d__back p {
+  color: white;
+  font-weight: bold;
 }

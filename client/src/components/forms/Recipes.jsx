@@ -4,7 +4,7 @@ import { getAllDiet, postAddRecipes } from '../../redux/actions/index';
 import { Link, useHistory } from 'react-router-dom';
 import s from './Recipes.module.css';
 import order_image from '../../assets/img/recipes_formulario.png';
-
+import { FaArrowLeft } from 'react-icons/fa';
 import logo_booton from '../../assets/img/logo_boottom.png';
 
 /* import './styles.css'; */
@@ -86,9 +86,14 @@ export default function Recipes() {
   return (
     <>
       <div className={s.container}>
-        <h1>
-          <Link to="/home">Ir a Menu...</Link>
-        </h1>
+        <br />
+        <Link to="/home">
+          <div className="d__back">
+            <p>
+              <FaArrowLeft />
+            </p>
+          </div>
+        </Link>
 
         <div className={s.conatiner__main}>
           <div className={s.order__image}>

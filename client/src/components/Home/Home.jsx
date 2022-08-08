@@ -57,6 +57,7 @@ const Home = () => {
           <Paginado
             tamañoRecipe={tamañoRecipe}
             tamañoPorpagina={tamañoPorpagina}
+            pageactual={page}
           />
         </div>
       </div>

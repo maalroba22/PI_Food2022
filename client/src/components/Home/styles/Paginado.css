@@ -7,6 +7,12 @@
   border-radius: 16%;
   margin-bottom: 1rem;
 }
+.b__active {
+  background: white;
+  cursor: pointer;
+  border: 1px solid var(--orange);
+  color: var(--orange);
+}
 
 .button__paginado:hover {
   background: white;

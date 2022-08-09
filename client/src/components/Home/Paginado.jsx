@@ -2,6 +2,8 @@ import React from 'react';
 import { paginado } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 import './styles/Paginado.css';
+import { FaAngleDoubleLeft } from 'react-icons/fa';
+import { FaAngleDoubleRight } from 'react-icons/fa';
 
 export default function Paginado({
   tamañoRecipe,
@@ -18,8 +20,25 @@ export default function Paginado({
     dispach(paginado(numero));
   }
 
+  /* next */
+  function handleClickNext() {
+    if (pageactual < pageNumbers.length) {
+      dispach(paginado(pageactual + 1));
+    }
+  }
+  function handleClickPreview() {
+    if (pageactual > 1) {
+      dispach(paginado(pageactual - 1));
+    } else {
+      alert('no hay mas pages');
+    }
+  }
+
   return (
     <div className="container__paginado ">
+      <button className="button__paginado" onClick={handleClickPreview}>
+        <FaAngleDoubleLeft />
+      </button>
       {pageNumbers.map((page) => {
         return (
           <button
@@ -33,6 +52,9 @@ export default function Paginado({
           </button>
         );
       })}
+      <button className="button__paginado" onClick={handleClickNext}>
+        <FaAngleDoubleRight />
+      </button>
     </div>
   );
 }

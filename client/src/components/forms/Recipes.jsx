@@ -238,7 +238,8 @@ export function validate(input) {
   let errors = {};
   if (!input.name) {
     errors.name = '! Recipe  is required';
-  } else if (!input.summary) {
+  }
+  if (!input.summary) {
     errors.summary = '! summary  is required';
   }
 

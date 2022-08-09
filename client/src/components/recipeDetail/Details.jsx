@@ -69,7 +69,7 @@ export default function Details() {
                 <input type="range" value={el.healthScore} />
                 <span>{el.healthScore}</span>
               </div>
-              <p>Details</p>
+              <p>Diests</p>
               <div className="d__diets">
                 {el.diets.map((d) => (
                   <div className="d__parrafo">

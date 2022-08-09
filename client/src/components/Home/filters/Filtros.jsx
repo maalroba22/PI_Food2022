@@ -59,6 +59,13 @@ export default function Filtros({ diet, setorder, setscore /* onclick */ }) {
         <option value="des">Mas Alto..</option>
       </select>
 
+      {/* filtrar los de la base de dtaos */}
+      <select name="ifoapidb">
+        <option value="all">All</option>
+        <option value="api">Api</option>
+        <option value="data">Data</option>
+      </select>
+
       <button onClick={/* onclick */ handleClick}>Reset Filter</button>
     </div>
   );

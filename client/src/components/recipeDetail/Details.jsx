@@ -14,34 +14,8 @@ export default function Details() {
     dispatch(recipesDetils(id));
   }, [dispatch]);
   let data = useSelector((state) => state.details);
-  console.log(data.map((el) => el));
-  return (
-    /* <div className="container__detalle">
-      <div className="detalle_contenido">
-        {data.map((el) => (
-          <div className="detalle__img" key={el.id}>
-            <p>{el.name}</p>
-            <img
-              src={el.image}
-              alt=" Not Fount"
-              onError={(e) => {
-                e.target.src = defaul;
-              }}
-            />
-            <ul>
-              {el.diets.map((d) => (
-                <li key={d.name}>{d.name}</li>
-              ))}
-            </ul>
-            <p>{el.createIndb}</p>
-            <p>{el.healthScore}</p>
-            <p dangerouslySetInnerHTML={{ __html: el?.stepbyStep }}></p>
 
-            <p dangerouslySetInnerHTML={{ __html: el?.summary }}></p>
-          </div>
-        ))}
-      </div>
-    </div> */
+  return (
     <div>
       {data.map((el) => (
         <div className="detalle" key={el.id}>
@@ -56,6 +30,7 @@ export default function Details() {
               </Link>
               <h1>{el.name}</h1>
               <img
+                className="d_imagen"
                 src={el.image}
                 alt=" Not Fount"
                 onError={(e) => {
@@ -66,7 +41,7 @@ export default function Details() {
                 <p>Score</p>
               </span>
               <div className="d__range">
-                <input type="range" value={el.healthScore} />
+                {<input type="range" defaultValue={el.healthScore} />}
                 <span>{el.healthScore}</span>
               </div>
               <p>Diests</p>

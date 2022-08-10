@@ -9,6 +9,7 @@ import {
   FILTER_BY_DIET,
   SEARCH_NAME_RECYPE,
   POST_ADD_RECIPES,
+  FILTER_DB_OR_API,
 } from './actions';
 /* const api = axios.create({
   baseURL: process.env.REACT_APP_API || 'http://localhost:3001',
@@ -25,7 +26,7 @@ export const getAllrecipes = () => {
 
 /*  ADD LAS RECIPES A MI DATABADSE */
 export const postAddRecipes = (payload) => {
-  return async function (dispatch) {
+  return async function () {
     try {
       const data = await axios.post('/recipes', payload);
       console.log(data);
@@ -87,7 +88,7 @@ export function filterBydiet(diet) {
 }
 
 /*   ----------------ORDENAR a-z,z-a-----------------*/
-export function filterByorder(order) {
+export function orderByaz(order) {
   return {
     type: ORDER_BY_NAME,
     payload: order,
@@ -95,7 +96,7 @@ export function filterByorder(order) {
 }
 
 /* ----------------ORDER POR PUNTUACION SCORE---------------- */
-export function filterByscore(score) {
+export function orderByscore(score) {
   return {
     type: ORDER_BY_SCORE,
     payload: score,
@@ -107,5 +108,13 @@ export function filterByscore(score) {
 export function paginado(numero) {
   return (dispatch) => {
     dispatch({ type: PAGINADO, payload: numero });
+  };
+}
+
+/* FILTRAR LOS DE LA PAGINA Y LOS DE LA API */
+export function filtercreated(data) {
+  return {
+    type: FILTER_DB_OR_API,
+    payload: data,
   };
 }

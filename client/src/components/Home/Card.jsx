@@ -62,7 +62,7 @@ export default function Card({ /* id, name, image, diets */ data }) {
           ))}
         </div>
 
-        <Link to={`/details/${data.id}`} className="menu__btn">
+        <Link to={`/details/${data.id} `} key={data.id} className="menu__btn">
           Detalle
         </Link>
       </div>

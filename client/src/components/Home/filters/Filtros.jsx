@@ -3,27 +3,32 @@ import { useDispatch } from 'react-redux';
 import { getAllrecipes } from '../../../redux/actions';
 import './Filter.css';
 import {
-  filterByorder,
-  filterByscore,
+  orderByaz,
+  orderByscore,
   filterBydiet,
+  filtercreated,
 } from '../../../redux/actions';
 
 export default function Filtros({ diet, setorder, setscore /* onclick */ }) {
   const dispatch = useDispatch();
 
   function handleOderByname(e) {
-    dispatch(filterByorder(e.target.value));
+    dispatch(orderByaz(e.target.value));
     setorder(e.target.value);
   }
   /* ordenar  por Score Puntuacion */
 
   function handleOrderScore(e) {
-    dispatch(filterByscore(e.target.value));
+    dispatch(orderByscore(e.target.value));
     setscore(e.target.value);
   }
 
   function handleFilterDiets(e) {
     dispatch(filterBydiet(e.target.value));
+  }
+
+  function handleFilterCreated(e) {
+    dispatch(filtercreated(e.target.value));
   }
 
   /* corregir handle reset filter */
@@ -39,7 +44,7 @@ export default function Filtros({ diet, setorder, setscore /* onclick */ }) {
         <option value="des">Z-A</option>
       </select>
       {/*-------------All dietas al select------------ */}
-      <select onClick={handleFilterDiets} name="diet" id="diet">
+      <select onChange={handleFilterDiets} name="diet" id="diet">
         <option value="defauls" disabled>
           seleccione..
         </option>
@@ -60,10 +65,10 @@ export default function Filtros({ diet, setorder, setscore /* onclick */ }) {
       </select>
 
       {/* filtrar los de la base de dtaos */}
-      <select name="ifoapidb">
+      <select name="ifoapidb" onChange={handleFilterCreated}>
         <option value="all">All</option>
         <option value="api">Api</option>
-        <option value="data">Data</option>
+        <option value="created">Created</option>
       </select>
 
       <button onClick={/* onclick */ handleClick}>Reset Filter</button>

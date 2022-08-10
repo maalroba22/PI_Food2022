@@ -59,3 +59,9 @@
   color: white;
   font-weight: bold;
 }
+.detalle_name .d_imagen {
+  width: 300;
+  height: 245;
+  border-radius: 2%;
+  box-shadow: 1px 3px 15px 1px gray;
+}

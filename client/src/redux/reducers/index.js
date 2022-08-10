@@ -8,10 +8,12 @@ import {
   FILTER_BY_DIET,
   SEARCH_NAME_RECYPE,
   POST_ADD_RECIPES,
+  FILTER_DB_OR_API,
 } from '../actions/actions';
 const initialState = {
   recipes: [],
-  recipesfiterdit: [], //copia de recipes
+  /* recipesfiterdit: [], */ //copia de recipes
+  allrecipes: [], //copia de recipes
   diets: [],
   details: [],
   page: 1,
@@ -23,7 +25,7 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         recipes: action.payload,
-        recipesFilterdiet: action.payload,
+        allrecipes: action.payload,
       };
     }
     case POST_ADD_RECIPES: {
@@ -45,11 +47,11 @@ const Reducer = (state = initialState, action) => {
       };
     }
     case FILTER_BY_DIET: {
-      const newRecipes = state.recipes;
+      const allrecipes = state.allrecipes;
       const recipesFilterdiet =
         action.payload === 'all'
-          ? newRecipes
-          : newRecipes.filter((el) => {
+          ? allrecipes
+          : allrecipes.filter((el) => {
               let names = el.diets.map((d) => d.name);
               if (names.includes(action.payload)) return el;
             });
@@ -118,6 +120,18 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         page: action.payload,
+      };
+    }
+    case FILTER_DB_OR_API: {
+      const allcreated = state.allrecipes;
+      const createFilter =
+        action.payload === 'created'
+          ? allcreated.filter((el) => el.createIndb === true)
+          : allcreated.filter((el) => el.createIndb === false);
+
+      return {
+        ...state,
+        recipes: action.payload === 'all' ? state.allrecipes : createFilter,
       };
     }
 

@@ -7,6 +7,7 @@ import Card from './Card';
 import Paginado from './Paginado';
 import './styles/home.css';
 import Navbar from './navbar/Navbar';
+import Loading from './Loading/Loading';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const Home = () => {
   let indexFinal = tamañoPorpagina * page; // 9 pagina
   let inicial = indexFinal - tamañoPorpagina; // 9-9=0
   currenRecipes = recipe.slice(inicial, indexFinal);
-
+  const [loder, setloader] = useState(false);
   return (
     <div>
       {/* -------------------Navbar------------------- */}
@@ -61,12 +62,18 @@ const Home = () => {
           />
         </div>
       </div>
+
       {/* ----------Card ----------*/}
-      <div className="gallary_image_box">
-        {currenRecipes?.map((recipe) => (
-          <Card data={recipe} key={recipe.id} />
-        ))}
-      </div>
+
+      {currenRecipes.length > 0 ? (
+        <div className="gallary_image_box">
+          {currenRecipes?.map((recipe) => (
+            <Card data={recipe} key={recipe.id} />
+          ))}
+        </div>
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };

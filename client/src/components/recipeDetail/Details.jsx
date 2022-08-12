@@ -47,7 +47,7 @@ export default function Details() {
               <p>Diests</p>
               <div className="d__diets">
                 {el.diets.map((d) => (
-                  <div className="d__parrafo">
+                  <div className="d__parrafo" key={d.name}>
                     <p>{d.name}</p>
                   </div>
                 ))}

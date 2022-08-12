@@ -9,6 +9,7 @@ import {
   SEARCH_NAME_RECYPE,
   POST_ADD_RECIPES,
   FILTER_DB_OR_API,
+  SET_ERROR,
 } from '../actions/actions';
 const initialState = {
   recipes: [],
@@ -17,6 +18,7 @@ const initialState = {
   diets: [],
   details: [],
   page: 1,
+  error: undefined,
 };
 
 const Reducer = (state = initialState, action) => {
@@ -26,6 +28,7 @@ const Reducer = (state = initialState, action) => {
         ...state,
         recipes: action.payload,
         allrecipes: action.payload,
+        error: undefined,
       };
     }
     case POST_ADD_RECIPES: {
@@ -44,6 +47,7 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         recipes: action.payload,
+        error: undefined,
       };
     }
     case FILTER_BY_DIET: {
@@ -132,6 +136,15 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         recipes: action.payload === 'all' ? state.allrecipes : createFilter,
+      };
+    }
+
+    case SET_ERROR: {
+      return {
+        ...state,
+        error: action.payload,
+        recipes: [],
+        allrecipes: [],
       };
     }
 

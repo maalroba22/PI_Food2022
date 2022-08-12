@@ -19,6 +19,7 @@ const Home = () => {
   const recipe = useSelector((state) => state.recipes);
   const allDiet = useSelector((state) => state.diets);
   const page = useSelector((state) => state.page);
+  const error = useSelector((state) => state.error);
 
   const [order, setOrder] = useState(''); //para guardar los ordenamientos
   const [socre, setScore] = useState('');
@@ -64,15 +65,16 @@ const Home = () => {
       </div>
 
       {/* ----------Card ----------*/}
-
-      {currenRecipes.length > 0 ? (
+      {error ? (
+        <p>no hay recetas </p>
+      ) : currenRecipes.length === 0 ? (
+        <Loading />
+      ) : (
         <div className="gallary_image_box">
           {currenRecipes?.map((recipe) => (
             <Card data={recipe} key={recipe.id} />
           ))}
         </div>
-      ) : (
-        <Loading />
       )}
     </div>
   );

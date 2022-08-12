@@ -1,17 +1,16 @@
 import React from 'react';
-import { useState } from 'react';
+/* import { useState } from 'react'; */
 import { useDispatch } from 'react-redux';
 import { getNamerecipes } from '../../../redux/actions/index';
 import './navbar.css';
 export default function Search() {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
+  /*  const [name, setName] = useState(''); */
 
   function handleInputChangue(e) {
     e.preventDefault();
-    setName(e.target.value);
-    console.log(name);
-    dispatch(getNamerecipes(name));
+    /*  setName(e.target.value); */
+    dispatch(getNamerecipes(e.target.value));
   }
   return (
     <div>

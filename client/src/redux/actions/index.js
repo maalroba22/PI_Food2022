@@ -10,6 +10,7 @@ import {
   SEARCH_NAME_RECYPE,
   POST_ADD_RECIPES,
   FILTER_DB_OR_API,
+  SET_ERROR,
 } from './actions';
 /* const api = axios.create({
   baseURL: process.env.REACT_APP_API || 'http://localhost:3001',
@@ -18,9 +19,12 @@ import {
 /* --------------lISTAR TODAS LAS RECIPES-------------- */
 export const getAllrecipes = () => {
   return async function (dispatch) {
-    await axios.get('/recipes/all').then((prueb) => {
-      return dispatch({ type: GET_ALL_RECIPE, payload: prueb.data });
-    });
+    try {
+      const json = await axios.get('/recipes/all');
+      return dispatch({ type: GET_ALL_RECIPE, payload: json.data });
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
@@ -29,28 +33,28 @@ export const postAddRecipes = (payload) => {
   return async function () {
     try {
       const data = await axios.post('/recipes', payload);
-      console.log(data);
       alert('Receta Creada Exitosa');
       return data;
     } catch (error) {
-      console.log(error);
       alert('Receta Fallida');
     }
   };
 };
 
 /* ---------------LISTAR TODAS LAS  DIETAS--------------- */
-
-export const getAllDiet = () => {
+export function getAllDiet() {
   return async function (dispatch) {
-    await axios.get('/diet').then((dietas) => {
+    try {
+      var dietas = await axios.get('/diet');
       return dispatch({
         type: GET_ALL_DIET,
         payload: dietas.data,
       });
-    });
+    } catch (error) {
+      console.log('No se Han podido cargar las dietas');
+    }
   };
-};
+}
 
 /* BUSCAR LAS RECIPES POR NOMBRE */
 export const getNamerecipes = (name) => {
@@ -62,7 +66,7 @@ export const getNamerecipes = (name) => {
         payload: json.data,
       });
     } catch (err) {
-      console.log(err);
+      dispatch({ type: SET_ERROR, payload: err });
     }
   };
 };

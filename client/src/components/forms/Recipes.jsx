@@ -47,11 +47,17 @@ export default function Recipes() {
       healthScore: e.target.value,
     });
   }
-  function selectHandleChangue(e) {
+  function selectHandleDiet(e) {
     setInput({
       ...input,
       diet: [...input.diet, e.target.value],
     });
+    setErrors(
+      validate({
+        ...input,
+        diet: [...input.diet, e.target.value],
+      })
+    );
   }
 
   function handleStep(e) {
@@ -76,11 +82,12 @@ export default function Recipes() {
     histori.push('/home');
   }
   function handleDelete(el) {
-    console.log(el);
-    setInput({
+    const newinput = {
       ...input,
       diet: input.diet.filter((d) => d !== el),
-    });
+    };
+    setInput(newinput);
+    setErrors(validate(newinput));
   }
 
   return (
@@ -176,11 +183,12 @@ export default function Recipes() {
                 </div>
 
                 <div>
-                  <select name="diet" onChange={(e) => selectHandleChangue(e)}>
+                  <select name="diet" onChange={(e) => selectHandleDiet(e)}>
                     {diets?.map((el) => (
                       <option value={el.name}>{el.name}</option>
                     ))}
                   </select>
+
                   <ul>
                     <div className={s.diet}>
                       {input.diet.map((el) => (
@@ -198,8 +206,8 @@ export default function Recipes() {
                     </div>
                   </ul>
                 </div>
-
-                {!input.name || !input.summary ? (
+                {errors.diet && <p className={s.danger}>{errors.diet}</p>}
+                {!input.name || !input.summary || !input.diet.length ? (
                   <div className={s.boton__add}>
                     <input
                       type="submit"
@@ -238,9 +246,10 @@ export function validate(input) {
   let errors = {};
   if (!input.name) {
     errors.name = '! Recipe  is required';
-  }
-  if (!input.summary) {
+  } else if (!input.summary) {
     errors.summary = '! summary  is required';
+  } else if (!input.diet.length) {
+    errors.diet = 'Seleccione al menos una Dieta';
   }
 
   return errors;

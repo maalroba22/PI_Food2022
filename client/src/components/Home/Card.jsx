@@ -30,6 +30,5 @@ export default function Card({ /* id, name, image, diets */ data }) {
         </Link>
       </div>
     </div>
-    
   );
 }

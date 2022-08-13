@@ -29,7 +29,7 @@ export const getAllrecipes = () => {
 };
 
 /*  ADD LAS RECIPES A MI DATABADSE */
-export const postAddRecipes = (payload) => {
+/* export const postAddRecipes = (payload) => {
   return async function () {
     try {
       const data = await axios.post('/recipes', payload);
@@ -39,7 +39,20 @@ export const postAddRecipes = (payload) => {
       alert('Receta Fallida');
     }
   };
-};
+}; */
+
+export function postAddRecipes(payload) {
+  return function () {
+ return   axios
+      .post('/recipes', payload)
+      .then((json) => {
+        alert('Receta Creada Exitosa');
+      })
+      .catch((error) => {
+        alert('Receta Fallida');
+      });
+  };
+}
 
 /* ---------------LISTAR TODAS LAS  DIETAS--------------- */
 export function getAllDiet() {

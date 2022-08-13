@@ -8,6 +8,7 @@ import Paginado from './Paginado';
 import './styles/home.css';
 import Navbar from './navbar/Navbar';
 import Loading from './Loading/Loading';
+import Error404 from '../Error/Error404';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const Home = () => {
   let indexFinal = tamañoPorpagina * page; // 9 pagina
   let inicial = indexFinal - tamañoPorpagina; // 9-9=0
   currenRecipes = recipe.slice(inicial, indexFinal);
+
   const [loder, setloader] = useState(false);
   return (
     <div>
@@ -66,7 +68,7 @@ const Home = () => {
 
       {/* ----------Card ----------*/}
       {error ? (
-        <p>no hay recetas </p>
+        <Error404 />
       ) : currenRecipes.length === 0 ? (
         <Loading />
       ) : (

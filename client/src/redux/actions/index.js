@@ -17,7 +17,7 @@ import {
 }); */
 
 /* --------------lISTAR TODAS LAS RECIPES-------------- */
-export const getAllrecipes = () => {
+     export const getAllrecipes = () => {
   return async function (dispatch) {
     try {
       const json = await axios.get('/recipes/all');
@@ -43,7 +43,7 @@ export const getAllrecipes = () => {
 
 export function postAddRecipes(payload) {
   return function () {
- return   axios
+    return axios
       .post('/recipes', payload)
       .then((json) => {
         alert('Receta Creada Exitosa');

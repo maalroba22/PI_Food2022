@@ -24,6 +24,8 @@ export default function Paginado({
   function handleClickNext() {
     if (pageactual < pageNumbers.length) {
       dispach(paginado(pageactual + 1));
+    } else {
+      alert('no hay mas pages');
     }
   }
   function handleClickPreview() {

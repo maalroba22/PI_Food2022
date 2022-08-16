@@ -28,6 +28,7 @@ const Reducer = (state = initialState, action) => {
         ...state,
         recipes: action.payload,
         allrecipes: action.payload,
+        page: state.page < action.payload.length ? state.page : 1,
         error: undefined,
       };
     }
@@ -48,6 +49,7 @@ const Reducer = (state = initialState, action) => {
         ...state,
         recipes: action.payload,
         error: undefined,
+        page: state.page < action.payload.length ? state.page : 1,
       };
     }
     case FILTER_BY_DIET: {
@@ -63,6 +65,7 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         recipes: recipesFilterdiet,
+        page: state.page < recipesFilterdiet.length ? state.page : 1,
       };
     }
 
@@ -93,7 +96,8 @@ const Reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        recipesFilterdiet: sortArray,
+        allrecipes: sortArray,
+        page: 1,
       };
     case GET_ALL_DIET: {
       return {
@@ -117,7 +121,8 @@ const Reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        recipesFilterdiet: sortscore,
+        allrecipes: sortscore,
+        page: 1,
       };
     }
     case PAGINADO: {
@@ -136,6 +141,7 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         recipes: action.payload === 'all' ? state.allrecipes : createFilter,
+        page: 1,
       };
     }
 

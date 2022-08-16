@@ -11,16 +11,24 @@ import Loading from './Loading/Loading';
 import Error404 from '../Error/Error404';
 
 const Home = () => {
+  const recipe = useSelector((state) => state.recipes);
+  const page = useSelector((state) => state.page);
+  const error = useSelector((state) => state.error);
+  const allDiet = useSelector((state) => state.diets);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllrecipes());
     dispatch(getAllDiet());
   }, [dispatch]);
 
-  const recipe = useSelector((state) => state.recipes);
-  const allDiet = useSelector((state) => state.diets);
-  const page = useSelector((state) => state.page);
-  const error = useSelector((state) => state.error);
+  useEffect(() => {
+    if (recipe) {
+      if (currenRecipes > recipe.length) {
+        dispatch(page(1));
+      }
+    }
+  }, [recipe]);
 
   const [order, setOrder] = useState(''); //para guardar los ordenamientos
   const [socre, setScore] = useState('');
@@ -37,7 +45,8 @@ const Home = () => {
   let inicial = indexFinal - tamañoPorpagina; // 9-9=0
   currenRecipes = recipe.slice(inicial, indexFinal);
 
-  const [loder, setloader] = useState(false);
+  /* const [loder, setloader] = useState(false); */
+
   return (
     <div>
       {/* -------------------Navbar------------------- */}

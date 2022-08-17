@@ -13,13 +13,15 @@ export default function Landing() {
     <div className="intro">
       <div className="i__left">
         <div className="i__name">
-          <h1> Pi Spinacular 2022</h1>
+          <h1> PI SPOONACULAR 2022</h1>
           <span>Manuel Romero</span>
           <span>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Accusantium esse voluptate qui iste exercitationem nisi laudantium
-            corporis aperiam. Suscipit a eum repellendus voluptate ea,
-            temporibus omnis placeat ut asperiores perferendis!
+            Este PI, está enfocado en el desarrollo de una Api de rectas
+            saludables para mantener un nivel de alimentación saludable,
+            seleccionando entre cientos de recetas que te permitan facilitar tu
+            alimentación diaria de forma eficiente y eficaz. Vas a poder buscar
+            la receta a tu gusto, y seguir el paso a paso de como la podes
+            preparar, y los tipos de dietas que aplica esta receta alimenticia.
           </span>
 
           <Link to="/home">

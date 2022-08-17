@@ -1,3 +1,6 @@
+body {
+  background-image: url('../../assets/img/bg1.jpg');
+}
 .intro {
   display: flex;
   height: 77vh;

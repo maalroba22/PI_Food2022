@@ -42,10 +42,12 @@ export default function Recipes() {
     );
   }
   function rangeHhandleChangue(e) {
-    setInput({
+    const newinputrangue = {
       ...input,
       healthScore: e.target.value,
-    });
+    };
+    setInput(newinputrangue);
+    setErrors(validate(newinputrangue));
   }
   function selectHandleDiet(e) {
     setInput({
@@ -149,6 +151,7 @@ export default function Recipes() {
                   />
                 </div>
                 {errors.summary && <p className={s.danger}>{errors.summary}</p>}
+
                 <div className={s.score}>
                   <span>{input.healthScore}</span>
                   <input
@@ -160,6 +163,9 @@ export default function Recipes() {
                     onChange={rangeHhandleChangue}
                   />
                 </div>
+                {errors.healthScore && (
+                  <p className={s.danger}>{errors.healthScore}</p>
+                )}
 
                 <div className="input__text">
                   <textarea
@@ -248,6 +254,8 @@ export function validate(input) {
     errors.name = '! Recipe  is required';
   } else if (!input.summary) {
     errors.summary = '! summary  is required';
+  } else if (!input.healthScore) {
+    errors.healthScore = '! healthScore  is required';
   } else if (!input.diet.length) {
     errors.diet = 'Seleccione al menos una Dieta';
   }

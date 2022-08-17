@@ -16,7 +16,7 @@ export default function Details() {
   let data = useSelector((state) => state.details);
 
   return (
-    <div >
+    <div>
       {data.map((el) => (
         <div className="detalle" key={el.id}>
           <div className="detalle__left">

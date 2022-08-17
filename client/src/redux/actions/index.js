@@ -17,7 +17,7 @@ import {
 }); */
 
 /* --------------lISTAR TODAS LAS RECIPES-------------- */
-     export const getAllrecipes = () => {
+export const getAllrecipes = () => {
   return async function (dispatch) {
     try {
       const json = await axios.get('/recipes/all');

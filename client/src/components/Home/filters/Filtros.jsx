@@ -9,7 +9,7 @@ import {
   filtercreated,
 } from '../../../redux/actions';
 
-export default function Filtros({ diet, setorder, setscore /* onclick */ }) {
+export default function Filtros({ diet, setorder, setscore }) {
   const dispatch = useDispatch();
 
   function handleOderByname(e) {
@@ -32,8 +32,9 @@ export default function Filtros({ diet, setorder, setscore /* onclick */ }) {
   }
 
   /* corregir handle reset filter */
-  function handleClick() {
-    dispatch(getAllrecipes());
+  function handleClick(e) {
+    /*  dispatch(getAllrecipes()); */
+    window.location.reload(false);
   }
 
   return (
@@ -66,12 +67,14 @@ export default function Filtros({ diet, setorder, setscore /* onclick */ }) {
 
       {/* filtrar los de la base de dtaos */}
       <select name="ifoapidb" onChange={handleFilterCreated}>
-        <option value="all">All</option>
+        <option value="all" defaultValue>
+          All
+        </option>
         <option value="api">Api</option>
         <option value="created">Created</option>
       </select>
 
-      <button onClick={/* onclick */ handleClick}>Reset Filter</button>
+      <button onClick={handleClick}>Reset Filter</button>
     </div>
   );
 }

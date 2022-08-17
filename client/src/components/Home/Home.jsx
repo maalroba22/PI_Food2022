@@ -22,21 +22,19 @@ const Home = () => {
     dispatch(getAllDiet());
   }, [dispatch]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (recipe) {
       if (currenRecipes > recipe.length) {
         dispatch(page(1));
       }
     }
-  }, [recipe]);
+  }, [recipe]); */
 
   const [order, setOrder] = useState(''); //para guardar los ordenamientos
   const [socre, setScore] = useState('');
 
   /* funcion para Reiniciar los filtros */
-  function handleClick() {
-    dispatch(getAllrecipes());
-  }
+
   /*----------------- Paginado Nuevo----------------- */
   let currenRecipes = [];
   const tamañoRecipe = recipe.length;
@@ -56,14 +54,7 @@ const Home = () => {
 
       <div className="filter_paginate">
         <div className="filtros">
-          {
-            <Filtros
-              diet={allDiet}
-              setorder={setOrder}
-              setscore={setScore}
-              onclick={handleClick}
-            />
-          }
+          {<Filtros diet={allDiet} setorder={setOrder} setscore={setScore} />}
         </div>
         <div className="paginate">
           {/* --------------Paginado-------------- */}

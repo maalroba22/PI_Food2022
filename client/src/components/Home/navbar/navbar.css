@@ -39,3 +39,16 @@ nav .logo img {
 .nav__buton .link {
   text-decoration: none;
 }
+.redes {
+  display: flex;
+  flex-direction: row;
+  width: 50px;
+  justify-content: space-around;
+  justify-items: center;
+}
+.linkedit {
+  transform: scale(0.3);
+}
+.github {
+  transform: scale(0.3);
+}

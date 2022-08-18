@@ -9,3 +9,4 @@ export const FILTER_BY_DIET = 'FILTER_BY_DIET';
 export const POST_ADD_RECIPES = 'POST_ADD_RECIPES';
 export const FILTER_DB_OR_API = 'FILTER_DB_OR_API';
 export const SET_ERROR = 'SET_ERROR';
+

@@ -50,16 +50,19 @@ export default function Recipes() {
     setErrors(validate(newinputrangue));
   }
   function selectHandleDiet(e) {
-    setInput({
-      ...input,
-      diet: [...input.diet, e.target.value],
-    });
-    setErrors(
-      validate({
+    if (!input.diet.includes(e.target.value)) {
+      setInput({
         ...input,
         diet: [...input.diet, e.target.value],
-      })
-    );
+      });
+      setErrors(
+        validate({
+          ...input,
+          diet: [...input.diet, e.target.value],
+        })
+      );
+    }
+    e.target.value = '';
   }
 
   function handleStep(e) {

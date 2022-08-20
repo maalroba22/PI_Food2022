@@ -16,16 +16,16 @@ export default function Landing() {
           <h1> PI SPOONACULAR 2022</h1>
           <span>Manuel Romero</span>
           <span>
-            Este PI, está enfocado en el desarrollo de una Api de rectas
-            saludables para mantener un nivel de alimentación saludable,
-            seleccionando entre cientos de recetas que te permitan facilitar tu
-            alimentación diaria de forma eficiente y eficaz. Vas a poder buscar
-            la receta a tu gusto, y seguir el paso a paso de como la podes
-            preparar, y los tipos de dietas que aplica esta receta alimenticia.
+            This PI is focused on the development of an API of healthy recipes
+            to maintain a healthy eating level, selecting from hundreds of
+            recipes that allow you to facilitate your daily diet efficiently and
+            effectively. You will be able to search for the recipe to your
+            liking, and follow the step by step of how you can prepare it, and
+            the types of diets that this food recipe applies.
           </span>
 
           <Link to="/home">
-            <button className="button i__button">Entrar</button>
+            <button className="button i__button">Get in</button>
           </Link>
         </div>
       </div>

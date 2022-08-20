@@ -61,8 +61,8 @@ export default function Filtros({ diet, setorder, setscore }) {
 
       {/* Filtrar por puntaje Score */}
       <select onChange={handleOrderScore} name="score" id="score">
-        <option value="asc">Mas Bajo..</option>
-        <option value="des">Mas Alto..</option>
+        <option value="asc">Lower</option>
+        <option value="des">Higher</option>
       </select>
 
       {/* filtrar los de la base de dtaos */}

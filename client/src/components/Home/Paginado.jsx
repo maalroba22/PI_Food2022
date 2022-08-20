@@ -25,14 +25,14 @@ export default function Paginado({
     if (pageactual < pageNumbers.length) {
       dispach(paginado(pageactual + 1));
     } else {
-      alert('no hay mas pages');
+      alert('there are no more pages');
     }
   }
   function handleClickPreview() {
     if (pageactual > 1) {
       dispach(paginado(pageactual - 1));
     } else {
-      alert('no hay mas pages');
+      alert('there are no more pages');
     }
   }
 

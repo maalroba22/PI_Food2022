@@ -26,7 +26,7 @@ export default function Card({ /* id, name, image, diets */ data }) {
         </div>
 
         <Link to={`/details/${data.id} `} key={data.id} className="menu__btn">
-          Detalle
+          Detail
         </Link>
       </div>
     </div>

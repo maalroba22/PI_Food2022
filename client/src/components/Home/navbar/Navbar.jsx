@@ -36,7 +36,7 @@ const Navbar = () => {
       </div>
       <div className="nav__buton">
         <Link to="/addrecipe" className="link">
-          <h3 className="button">Crear Nueva Receta</h3>
+          <h3 className="button">Add New Recipe</h3>
         </Link>
       </div>
     </nav>

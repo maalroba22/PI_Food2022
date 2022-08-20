@@ -23,7 +23,7 @@ export default function Search() {
           <input
             onChange={handleInputChangue}
             type="text"
-            placeholder="Ingrese el Nombre de una Recype"
+            placeholder="search Recipe"
           />
         </div>
       </div>

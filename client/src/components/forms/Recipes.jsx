@@ -129,7 +129,7 @@ export default function Recipes() {
               </div> */}
             </div>
             <div className={s.forms__info}>
-              <h1>CREAR NUEVA RECETA</h1>
+              <h1>NEW RECIPE</h1>
               <form onSubmit={handleSubmit}>
                 <div className="input__text">
                   <input
@@ -220,7 +220,7 @@ export default function Recipes() {
                   <div className={s.boton__add}>
                     <input
                       type="submit"
-                      value=" Guardar Recipes"
+                      value=" Add Recipe"
                       className={s.boton__inactivo}
                       disabled
                     />
@@ -229,7 +229,7 @@ export default function Recipes() {
                   <div className={s.boton__new}>
                     <input
                       type="submit"
-                      value=" Guardar Recipes"
+                      value=" Add Recipe"
                       className={s.boton}
                     />
                   </div>

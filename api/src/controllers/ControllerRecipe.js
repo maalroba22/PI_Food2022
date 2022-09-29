@@ -30,6 +30,7 @@ const getApiInfo = async () => {
     console.log('los datos de recetas ya estan cargados 202');
   }
 };
+
 /* Obtengo los Datos de la base de Datos */
 const getDbinfo = async () => {
   return await Recipe.findAll({

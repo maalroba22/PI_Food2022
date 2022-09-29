@@ -4,7 +4,9 @@ const axios = require('axios');
 //const { API_KEY } = process.env;
 const router = Router();
 const model = require('../controllers/ControllerRecipe');
+const { recipes } = require('../controllers/RecetasApi');
 
+/* listar todas las dietas y buscar por name */
 router.get('/all', async (req, res) => {
   const name = req.query.name;
   let recipeTotal = await model.getDbinfo();
@@ -38,6 +40,8 @@ router.get('/:id', async (req, res) => {
       : res.status(404).send('No se Encontro Receta con el id: ' + id);
   }
 });
+
+/* eliminar un recipe */
 
 /*-------Agrega un Receta y tipos de Dietas------*/
 router.post('/', async (req, res) => {
